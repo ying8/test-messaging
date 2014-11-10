@@ -13,6 +13,9 @@ else
 fi
 
 echo "$key" > thiskey
+
+chmod 0600 thiskey
+
 ssh-agent bash -c 'ssh-add thiskey; git clone git@github.com:rackerlabs/arbor_labs.git'
 
 cd arbor_labs
