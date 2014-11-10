@@ -16,15 +16,16 @@ echo "$key" > thiskey
 
 chmod 0600 thiskey
 
-ssh-agent bash -c 'ssh-add thiskey; git clone git@github.com:rackerlabs/arbor.git'
+ssh-agent bash -c 'ssh-add thiskey; git clone git@github.com:rackerlabs/arbor.git /tmp/arbor'
 
-cd arbor_labs
+cd /tmp/arbor
 
-info=$(git log | head -n 6)
+info="This is the latest commit from arbor\n"
+info="$info $(git log | head -n 6)"
 
 echo "$info"
 
-curl -i -X POST -u $user:$password -H "Content-Type: application/json" -d '{"title": "Arbor created an issue", "body": "This is the latest commit from arbor\n$info", "assignee": "ying8"}'  https://api.github.com/repos/ying8/test-messaging/issues
+curl -i -X POST -u $user:$password -H "Content-Type: application/json" -d '{"title": "Arbor created an issue", "body": $info, "assignee": "ying8"}'  https://api.github.com/repos/ying8/test-messaging/issues
 
 echo "+++end+++"
 
