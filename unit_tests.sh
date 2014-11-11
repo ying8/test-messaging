@@ -20,7 +20,7 @@ ssh-agent bash -c 'ssh-add thiskey; git clone git@github.com:rackerlabs/arbor.gi
 
 cd /tmp/arbor
 
-info="This is the latest commit from arbor\n"
+info="This is the latest commit from Arbor\n\n"
 info="$info $(git log | sed '1q;d')\n"
 info="$info $(git log | sed '2q;d')\n"
 info="$info $(git log | sed '3q;d')\n"
