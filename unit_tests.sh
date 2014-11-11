@@ -21,11 +21,14 @@ ssh-agent bash -c 'ssh-add thiskey; git clone git@github.com:rackerlabs/arbor.gi
 cd /tmp/arbor
 
 info="This is the latest commit from arbor\n"
-info="$info $(git log | head -n 6)"
+info="$info $(git log | sed '1q;d')\n"
+info="$info $(git log | sed '2q;d')\n"
+info="$info $(git log | sed '3q;d')\n"
+info="$info $(git log | sed '4q;d')\n"
+info="$info $(git log | sed '5q;d')"
+echo "{\"title\": \"Arbor created an issue\", \"assignee\": \"ying8\", \"body\": \"$info\"}" > data
 
-echo "$info"
-
-curl -i -X POST -u $user:$password -H "Content-Type: application/json" -d '{"title": "Arbor created an issue", "body": $info, "assignee": "ying8"}'  https://api.github.com/repos/ying8/test-messaging/issues
+curl -i -X POST -u $user:$password -H "Content-Type: application/json" -d @data https://api.github.com/repos/ying8/test-messaging/issues
 
 echo "+++end+++"
 
