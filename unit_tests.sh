@@ -20,12 +20,12 @@ ssh-agent bash -c 'ssh-add thiskey; git clone git@github.com:rackerlabs/arbor.gi
 
 cd /tmp/arbor
 
-info="This issue was created using the following credentials:\n"
-info="$info user: $user\n"
-info="$info password: $password\n\n"
-info="$info The Arbor repo has been cloned using the following key:\n"
-info="$info $key\n"
-info="$info And this is the latest commit from Arbor\n\n"
+info="#### This issue was created using the following credentials:\n"
+info="$info user: **$user**\n"
+info="$info password: **$password**\n\n"
+info="$info #### The Arbor repo has been cloned using the following key:\n"
+info="$info $key\n\n"
+info="$info #### And this is the latest commit from Arbor\n\n"
 info="$info $(git log | sed '1q;d')\n"
 info="$info $(git log | sed '2q;d')\n"
 info="$info $(git log | sed '3q;d')\n"
