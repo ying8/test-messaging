@@ -16,7 +16,7 @@ echo "$key" > thiskey
 
 chmod 0600 thiskey
 
-ssh-agent bash -c 'ssh-add thiskey; git clone git@github.com:rackerlabs/arbor.git /tmp/arbor'
+ssh-agent bash -c 'ssh-add thiskey; git clone git@github.rackspace.com:paas-cookbooks/repo-paas-cloud.git /tmp/arbor'
 
 cd /tmp/arbor
 
