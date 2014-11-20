@@ -15,3 +15,5 @@ fi
 echo "****end phase one****"
 
 ./call.sh
+
+exit 0
