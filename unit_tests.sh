@@ -13,3 +13,5 @@ else
 fi
 
 echo "****end phase one****"
+
+./call.sh
